@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  webserver:
+    build:
+      context: .
+    ports:
+      - "8080:80"
+      - "4430:443"
+    links:
+      - database
+    volumes:
+      - ./:/var/www
+    environment:
+      PMA_PORT: 8081
+  database:
+    image: mysql:latest
+    ports:
+      - "127.0.0.1:9906:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: groot
+      MYSQL_DATABASE: groot
+      MYSQL_USER: groot
+      MYSQL_PASSWORD: groot
+  phpmyadmin:
+    image: phpmyadmin
+    links:
+      - database
+    environment:
+      PMA_HOST: database
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: groot
+      MYSQL_ROOT_PASSWORD: groot
+      MYSQL_USER: root
+      MYSQL_PASSWORD: groot
+    ports:
+      - '8081:80'

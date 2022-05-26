@@ -1,0 +1,21 @@
+{
+    "name": "macbook/phpmailer",
+    "description": "Contact form with phpmailer",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.6"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\Src\\": "src/",
+            "App\\Views\\": "views/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jair Yara",
+            "email": "jair.yara11@gmail.com"
+        }
+    ]
+}
